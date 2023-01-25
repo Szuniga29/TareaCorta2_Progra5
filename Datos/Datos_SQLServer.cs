@@ -38,7 +38,7 @@ namespace Datos
             }
         }//fn constructor
 
-        public Boolean probarConexion(string usuarioValidar,string passValidar)
+        public Boolean probarConexion_SP(string usuarioValidar,string passValidar)
         {
             try
             {
@@ -69,6 +69,46 @@ namespace Datos
             }
             finally { this.sqlConector.Close(); }   
         }//fn prueba conec
+        public Boolean probarConexionSQLServer()
+        {
+            try
+            {
+                //solo abrimos y cerramos la conexion para saber que el usuario viene bien 
+                sqlConector.Open();
+
+                return true;
+            }
+            catch (Exception Error)
+            {
+                throw new Exception(Error.Message);
+            }
+            finally
+            {
+                sqlConector.Close();
+            }
+
+        }//fin querySQL_Server
+        public Boolean probarConexionSQLServer_Win_Autentifi()
+        {
+            try
+            {
+                this.sqlConector = new SqlConnection("Data Source=" + ConfigurationManager.AppSettings["DataSource"] + ";Initial Catalog=master;Integrated Security=True");
+
+                //solo abrimos y cerramos la conexion para saber que el usuario viene bien 
+                sqlConector.Open();
+
+                return true;
+            }
+            catch (Exception Error)
+            {
+                throw new Exception(Error.Message);
+            }
+            finally
+            {
+                sqlConector.Close();
+            }
+
+        }//fin querySQL_Server
         public DataTable QuerySQL_Server(String QueryDelUsuario)
         {
             try
@@ -95,26 +135,6 @@ namespace Datos
             }
 
         }//fin querySQL_Server
-        public Boolean probarConexionSQLServer()
-        {
-            try
-            {
-                //solo abrimos y cerramos la conexion para saber que el usuario viene bien 
-                sqlConector.Open();
-
-                return true;
-            }
-            catch (Exception Error)
-            {
-                throw new Exception(Error.Message);
-            }
-            finally
-            {
-                sqlConector.Close();
-            }
-
-        }//fin querySQL_Server
-
         public DataTable QuerySQL_Server_Win_Autentifi(String QueryDelUsuario)
         {
             try
@@ -144,26 +164,6 @@ namespace Datos
 
         }//fin querySQL_Server
 
-        public Boolean probarConexionSQLServer_Win_Autentifi()
-        {
-            try
-            {
-                this.sqlConector = new SqlConnection("Data Source=" + ConfigurationManager.AppSettings["DataSource"] + ";Initial Catalog=master;Integrated Security=True");
-
-                //solo abrimos y cerramos la conexion para saber que el usuario viene bien 
-                sqlConector.Open();
-
-                return true;
-            }
-            catch (Exception Error)
-            {
-                throw new Exception(Error.Message);
-            }
-            finally
-            {
-                sqlConector.Close();
-            }
-
-        }//fin querySQL_Server
+      
     }//fin class
 }//fn space
