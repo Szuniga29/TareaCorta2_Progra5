@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-    internal class Usuario
+    public class Usuario
     {
+        private static String strUsuario = "";
+        private static String strPassword = "";
+     
+        public static string usuario { get => strUsuario; set => strUsuario = value; }
+        public static string password { get => strPassword; set => strPassword = value; }
     }
 }
