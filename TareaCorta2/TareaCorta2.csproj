@@ -94,9 +94,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Negocio\Negocio.csproj">
-      <Project>{c04567c9-0375-4313-85ed-2cd54e2c489e}</Project>
-      <Name>Negocio</Name>
+    <ProjectReference Include="..\Negocios\Negocios.csproj">
+      <Project>{f36dc81c-cf88-45da-931c-ee2bcae8a079}</Project>
+      <Name>Negocios</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
