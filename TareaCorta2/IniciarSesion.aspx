@@ -54,6 +54,7 @@
                     <br />
                     <br />
                     <br />
+                    <asp:Label ID="lblError0" runat="server" CssClass="alert-danger"></asp:Label>
                     <br />
 
                 </div>

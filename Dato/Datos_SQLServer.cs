@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -164,6 +165,65 @@ namespace Datos
 
         }//fin querySQL_Server
 
-      
+
+        //public Boolean InsertarUsuario(string usuario, string password)
+        //{
+        //    try
+        //    {
+        //        SqlCommand cmd = new SqlCommand("SP_insertar", sqlConector)
+        //        {
+        //            CommandType = System.Data.CommandType.StoredProcedure
+        //        };
+        //        cmd.Connection.Open();
+        //        cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 20).Value = usuario;
+        //        cmd.Parameters.Add("@clave", SqlDbType.VarChar, 20).Value = password;
+        //        //cmd.Parameters.Add("@patron", SqlDbType.VarChar, 50).Value = "encripta1";
+        //       cmd.ExecuteNonQuery();
+
+               
+        //            return true;
+              
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        throw new Exception(ex.Message);
+
+        //    }
+        //    finally { this.sqlConector.Close(); }
+        //}//fn prueba conec
+
+
+
+        public DataTable login(Usuario objUsuario)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Login", sqlConector);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                
+                cmd.Connection.Open();
+               
+                cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 20).Value = objUsuario.usuario;
+                cmd.Parameters.Add("@password", SqlDbType.VarChar, 20).Value = objUsuario.pass;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+
+            }
+            finally { this.sqlConector.Close(); }
+        }//fn prueba conec
+    
+
+
+
+
+
     }//fin class
 }//fn space
