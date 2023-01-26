@@ -72,7 +72,7 @@
   <ItemGroup>
     <Content Include="Bienvenido.aspx" />
     <Content Include="HojaEstilo1.css" />
-    <Content Include="IniciarSesion.aspx" />
+    <Content Include="index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,11 +84,11 @@
       <DependentUpon>Bienvenido.aspx</DependentUpon>
     </Compile>
     <Compile Include="IniciarSesion.aspx.cs">
-      <DependentUpon>IniciarSesion.aspx</DependentUpon>
+      <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="IniciarSesion.aspx.designer.cs">
-      <DependentUpon>IniciarSesion.aspx</DependentUpon>
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
