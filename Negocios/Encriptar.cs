@@ -27,6 +27,6 @@ namespace Negocios
             return result;
         }
     }//fin class encriptar
-
+}
     //Creditos:Estos metodos se basaron en el aporte del Sr.Juan Iruela de la pag:
     //https://www.inesem.es/revistadigital/informatica-y-tics/seguridad-en-c-encriptar-y-desencriptar-datos/
