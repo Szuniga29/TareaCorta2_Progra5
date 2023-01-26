@@ -13,6 +13,8 @@ namespace TareaCorta2
 {
     public partial class IniciarSesion : System.Web.UI.Page
     {
+        //VARIABLES GLOBALES
+        int cont_Intentos = 0;
         Procesos objProcesos= new Procesos();
         Usuario objusuario= new Usuario();
         protected void Page_Load(object sender, EventArgs e)
@@ -41,23 +43,35 @@ namespace TareaCorta2
                 if (AlgoritmoContraseñaSegura(Txtcontrasena.Text))
                 {
                     Txtcontrasena.Enabled = true;
-                Response.Redirect("Bienvenido.aspx");
+                    Response.Redirect("Bienvenido.aspx");
 
                 }
                 else
-                    {
-                        Txtcontrasena.Enabled = false;
-
-                    lblError0.Text = "Usuario o Contraseña Incorrecta";
+                 {
+                    Txtcontrasena.Enabled = false;
+                    //lblError0.Text = "Usuario o Contraseña Incorrecta";
+                    Alerta_Mensaje("Password no cumple, debe tener Mayusculas,minusculas y cararcter especial");
+                    return;
                 }
-
 
 
             } else
             {
-                lblError0.Text = "Usuario o Contraseña Incorrecta";
-
-
+                if (Convert.ToInt32(Session["cont_Intentos"]) > 1)
+                {
+                    Lblerror.Text = "Usuario Bloqueado por exceso de intentos";
+                    Alerta_Mensaje("Se bloqueo su usario por exceso de intentos");
+                    this.BtnIngresar.Visible = false;
+                    this.BtnIngresar.Enabled = false;
+                }
+                else
+                {
+                    lblError0.Text = "Usuario o Contraseña Incorrecta";
+                    cont_Intentos += Convert.ToInt32(Session["cont_Intentos"]);
+                    cont_Intentos++;
+                    Session["cont_Intentos"] = cont_Intentos;
+                }
+               
             }
         }
 
@@ -121,5 +135,14 @@ namespace TareaCorta2
                 lblError0.Text = "Error al guardar los datos";
            }
         }
-    }
-}
+
+        #region Metodos Internos
+        public void Alerta_Mensaje(string mensaje)
+        {
+            string script = "<script type='text/javascript'> alert('" + mensaje + "');" +
+                            "</script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+        }
+        #endregion
+    }//fin class
+}//fin space
