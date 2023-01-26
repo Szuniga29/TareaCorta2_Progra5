@@ -50,6 +50,12 @@
                 <div <%--class="row"--%>>
 
                     <asp:Button ID="BtnIngresar" CssClass="form-control btn btn-primary " runat="server" Text="Ingresar" BackColor="#E9ECEF" BorderStyle="None" OnClick="BtnIngresar_Click" ForeColor="Black" />
+                   
+                     <br />
+                    <br />
+                   
+                     <asp:Button ID="BtRegistrar" CssClass="form-control btn btn-primary " runat="server" Text="Registrar" BackColor="#E9ECEF" BorderStyle="None"  ForeColor="Black" OnClick="BtRegistrar_Click" />
+                   
                     <asp:Label ID="Lblerror" runat="server" Text=" " CssClass="texto"></asp:Label>
                     <br />
                     <br />

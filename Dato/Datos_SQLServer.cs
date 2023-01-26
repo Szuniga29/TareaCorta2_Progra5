@@ -166,32 +166,32 @@ namespace Datos
         }//fin querySQL_Server
 
 
-        //public Boolean InsertarUsuario(string usuario, string password)
-        //{
-        //    try
-        //    {
-        //        SqlCommand cmd = new SqlCommand("SP_insertar", sqlConector)
-        //        {
-        //            CommandType = System.Data.CommandType.StoredProcedure
-        //        };
-        //        cmd.Connection.Open();
-        //        cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 20).Value = usuario;
-        //        cmd.Parameters.Add("@clave", SqlDbType.VarChar, 20).Value = password;
-        //        //cmd.Parameters.Add("@patron", SqlDbType.VarChar, 50).Value = "encripta1";
-        //       cmd.ExecuteNonQuery();
+        public Boolean InsertarUsuario(string usuario, string pass)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_insertar", sqlConector)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+                cmd.Connection.Open();
+                cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 20).Value = usuario;
+                cmd.Parameters.Add("@password", SqlDbType.VarChar, 20).Value = pass;
 
-               
-        //            return true;
-              
-        //    }
-        //    catch (Exception ex)
-        //    {
+                cmd.ExecuteNonQuery();
 
-        //        throw new Exception(ex.Message);
 
-        //    }
-        //    finally { this.sqlConector.Close(); }
-        //}//fn prueba conec
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+
+            }
+            finally { this.sqlConector.Close(); }
+        }//fn prueba conec
 
 
 

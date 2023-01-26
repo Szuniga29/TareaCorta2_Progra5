@@ -37,17 +37,89 @@ namespace TareaCorta2
 
             if (dt.Rows.Count > 0 )
             {
-            lblError0.Text = "Bienvenido ";
-               
+
+                if (AlgoritmoContraseñaSegura(Txtcontrasena.Text))
+                {
+                    Txtcontrasena.Enabled = true;
+                Response.Redirect("Bienvenido.aspx");
+
+                }
+                else
+                    {
+                        Txtcontrasena.Enabled = false;
+
+                    lblError0.Text = "Usuario o Contraseña Incorrecta";
+                }
+
+
 
             } else
             {
-                lblError0.Text = "Adios ";
+                lblError0.Text = "Usuario o Contraseña Incorrecta";
 
 
             }
         }
 
 
+        private bool AlgoritmoContraseñaSegura(string password)
+        {
+           bool mayuscula = false, minuscula = false, numero = false, carespecial = false;
+            for (int i = 0; i < password.Length; i++)
+            {
+                if (Char.IsUpper(password, i))
+                {
+                    mayuscula = true;
+                }
+                else if (Char.IsLower(password, i))
+                {
+                    minuscula = true;
+                }
+                else if (Char.IsDigit(password, i))
+                {
+                    numero = true;
+                }
+                else
+                {
+                    carespecial = true;
+                }
+            }
+            if (mayuscula && minuscula && numero && carespecial && password.Length >= 8)
+            {
+                return true;
+            }
+            return false;
+
+
+
+           
+
+        }
+
+        void validar()
+        {
+            if (AlgoritmoContraseñaSegura(Txtcontrasena.Text))
+                Txtcontrasena.Enabled=true; 
+            else Txtcontrasena.Enabled=false; 
+        }
+
+        protected void BtRegistrar_Click(object sender, EventArgs e)
+        {
+          
+            if (AlgoritmoContraseñaSegura(Txtcontrasena.Text))
+            {
+                Txtcontrasena.Enabled = true;
+                objProcesos.usuario=  TxtUsusario.Text;
+                objProcesos.pass= Txtcontrasena.Text;
+                objProcesos.insertar();
+                lblError0.Text = "Los datos se guardaron Correctamente ";
+            }
+            else
+            {
+                Txtcontrasena.Enabled = false;
+
+                lblError0.Text = "Error al guardar los datos";
+           }
+        }
     }
 }

@@ -70,11 +70,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bienvenido.aspx" />
     <Content Include="HojaEstilo1.css" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bienvenido.aspx.cs">
+      <DependentUpon>Bienvenido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bienvenido.aspx.designer.cs">
+      <DependentUpon>Bienvenido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="IniciarSesion.aspx.cs">
       <DependentUpon>IniciarSesion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
