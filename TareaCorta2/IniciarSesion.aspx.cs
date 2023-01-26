@@ -124,7 +124,7 @@ namespace TareaCorta2
             {
                 Txtcontrasena.Enabled = true;
                 objProcesos.usuario=  TxtUsusario.Text;
-                objProcesos.pass= Txtcontrasena.Text;
+                objProcesos.pass= Encriptar.Encriptando(Txtcontrasena.Text);
                 objProcesos.insertar();
                 lblError0.Text = "Los datos se guardaron Correctamente ";
             }
