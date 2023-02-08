@@ -35,16 +35,16 @@ namespace TareaCorta2
 
 
             objusuario.usuario = TxtUsusario.Text;
-           objusuario.pass =Encriptar.Encriptando (Txtcontrasena.Text);
+           objusuario.pass =Encriptar.Encriptando(Txtcontrasena.Text);
             dt = objProcesos.Login(objusuario);
 
             if (dt.Rows.Count > 0 )
             {
                 //Txtcontrasena.Enabled = true;
-                Response.Redirect("Bienvenido.aspx");
+                //Response.Redirect("Bienvenido.aspx");
                 if (AlgoritmoContraseñaSegura(Txtcontrasena.Text))
                 {
-                    Txtcontrasena.Enabled = true;
+             
                     Response.Redirect("Bienvenido.aspx");
 
                 }
@@ -147,12 +147,6 @@ namespace TareaCorta2
         }
         #endregion
 
-       public void Txtcontrasena_TextChanged(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                Encriptar.Encriptando(Txtcontrasena.Text);
-            }
-        }
+      
     }//fin class
 }//fin space
