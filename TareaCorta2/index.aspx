@@ -38,7 +38,7 @@
                     <%-- Contraseña--%>
                     <div>
                         <asp:Label ID="LblContrasena" runat="server" Text="Contraseña"></asp:Label>
-                        <asp:TextBox ID="Txtcontrasena" CssClass="form-control" runat="server" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="Txtcontrasena" CssClass="form-control" runat="server" placeholder="Contraseña" TextMode="Password" ></asp:TextBox>
                     </div>
                     <br />
 

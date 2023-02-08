@@ -176,7 +176,7 @@ namespace Datos
                 };
                 cmd.Connection.Open();
                 cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 20).Value = usuario;
-                cmd.Parameters.Add("@password", SqlDbType.VarChar, 20).Value = pass;
+                cmd.Parameters.Add("@password", SqlDbType.VarChar, 50).Value = pass;
 
                 cmd.ExecuteNonQuery();
 
@@ -204,8 +204,8 @@ namespace Datos
                 
                 cmd.Connection.Open();
                
-                cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 20).Value = objUsuario.usuario;
-                cmd.Parameters.Add("@password", SqlDbType.VarChar, 20).Value = objUsuario.pass;
+                cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 50).Value = objUsuario.usuario;
+                cmd.Parameters.Add("@password", SqlDbType.VarChar, 50).Value = objUsuario.pass;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);

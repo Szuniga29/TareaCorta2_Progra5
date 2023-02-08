@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +22,7 @@ namespace Negocios
         public static string DesEncriptando(this string _cadenaAdesencriptar)
         {
             string result = string.Empty;
-            byte[] MostrarString = Convert.FromBase64String(_cadenaAdesencriptar);
+            byte[] MostrarString = System.Text.Encoding.UTF8.GetBytes(_cadenaAdesencriptar);
             //result = System.Text.Encoding.Unicode.GetString(decryted, 0, decryted.ToArray().Length);
             result = System.Text.Encoding.Unicode.GetString(MostrarString);
             return result;

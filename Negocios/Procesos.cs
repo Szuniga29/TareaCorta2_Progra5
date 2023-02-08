@@ -26,7 +26,9 @@ namespace Negocios
 
         public DataTable Login(Usuario objUsuario)
         { 
+
         return objDatos.login(objUsuario);
+            
         }
 
        public void insertar()

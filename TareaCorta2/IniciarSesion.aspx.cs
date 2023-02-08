@@ -32,14 +32,16 @@ namespace TareaCorta2
         {
 
           DataTable dt = new DataTable();
-            objusuario.usuario = TxtUsusario.Text;
-            objusuario.pass = Txtcontrasena.Text;
 
-            dt= objProcesos.Login(objusuario);
+
+            objusuario.usuario = TxtUsusario.Text;
+           objusuario.pass =Encriptar.Encriptando (Txtcontrasena.Text);
+            dt = objProcesos.Login(objusuario);
 
             if (dt.Rows.Count > 0 )
             {
-
+                //Txtcontrasena.Enabled = true;
+                Response.Redirect("Bienvenido.aspx");
                 if (AlgoritmoContraseñaSegura(Txtcontrasena.Text))
                 {
                     Txtcontrasena.Enabled = true;
@@ -49,8 +51,8 @@ namespace TareaCorta2
                 else
                  {
                     Txtcontrasena.Enabled = false;
-                    //lblError0.Text = "Usuario o Contraseña Incorrecta";
-                    Alerta_Mensaje("Password no cumple, debe tener Mayusculas,minusculas y cararcter especial");
+                    //lblError0.Text = "";
+                    Alerta_Mensaje("Usuario o Contraseña Incorrecta");
                     return;
                 }
 
@@ -144,5 +146,13 @@ namespace TareaCorta2
             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
         }
         #endregion
+
+       public void Txtcontrasena_TextChanged(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                Encriptar.Encriptando(Txtcontrasena.Text);
+            }
+        }
     }//fin class
 }//fin space
